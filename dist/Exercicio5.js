@@ -56,7 +56,7 @@ var Vendedores = /** @class */ (function () {
     Object.defineProperty(Vendedores.prototype, "setSalario", {
         set: function (Salario) {
             if (Salario <= 0) {
-                throw new Error("Valor Inválido!");
+                throw new Error("Salário Inválido!");
             }
             this._Salario = Salario;
         },
@@ -66,7 +66,7 @@ var Vendedores = /** @class */ (function () {
     Object.defineProperty(Vendedores.prototype, "setValorDaVenda", {
         set: function (ValorDaVenda) {
             if (ValorDaVenda <= 0) {
-                throw new Error("Valor Inválido");
+                throw new Error("Valor da venda Inválido");
             }
             this._ValorDaVenda = ValorDaVenda;
         },
@@ -141,31 +141,31 @@ var VendedorDePessoaFisica = /** @class */ (function (_super) {
 // Instanciando a Classe Vendedores
 var NovoVendedor = new Vendedores("Leandro", 5000, 600);
 try {
-    NovoVendedor.setNome = "André";
+    NovoVendedor.setNome = "Pedro";
     NovoVendedor.setSalario = 5000;
-    NovoVendedor.setValorDaVenda = 600;
+    NovoVendedor.setValorDaVenda = 200;
     console.log("Nome do vendedor \u00E9: " + NovoVendedor.getNome + " ");
-    console.log("O sal\u00E1rio do vendedor: " + NovoVendedor.getNome + ", \u00E9 igual a: " + NovoVendedor.getSalario);
-    console.log(NovoVendedor.getValorDaVenda);
+    console.log("Seu sal\u00E1rio \u00E9 de: R$" + NovoVendedor.getSalario);
+    console.log("O valor da sua venda foi de: R$" + NovoVendedor.getValorDaVenda);
     console.log("Desconto do sal\u00E1rio \u00E9 igual a: " + NovoVendedor.Desconto(NovoVendedor.getSalario));
 }
 catch (error) {
     console.log(error.message);
 }
+console.log("--------------------------------------");
 // Instanciando a Classe VendedorPessoaFisica
 var PessoaFisicaNova = new VendedorDePessoaFisica("Pedrin", 3000, 500, "Sudeste");
 try {
-    PessoaFisicaNova.setNome = "Lucas";
+    PessoaFisicaNova.setNome = "Rafael";
     PessoaFisicaNova.setSalario = 9000;
-    PessoaFisicaNova.setValorDaVenda = 600;
-    PessoaFisicaNova.setRegiao = "Centro-Oeste";
-    console.log(PessoaFisicaNova.getNome);
-    console.log(PessoaFisicaNova.getSalario);
-    console.log(PessoaFisicaNova.getValorDaVenda);
-    console.log(PessoaFisicaNova.getRegiao);
+    PessoaFisicaNova.setValorDaVenda = 300;
+    PessoaFisicaNova.setRegiao = "Nordeste";
+    console.log("Nome da pessoa f\u00EDsica: " + PessoaFisicaNova.getNome);
+    console.log("Sal\u00E1rio da pessoa f\u00EDsica: " + PessoaFisicaNova.getSalario);
+    console.log("Valor da venda: " + PessoaFisicaNova.getValorDaVenda);
+    console.log("Regi\u00E3o: " + PessoaFisicaNova.getRegiao);
     // Irá armazenar o valor da comissão na variável comissaoCalculada
     var comissaoCalculada = PessoaFisicaNova.MetodoComissao(PessoaFisicaNova.getValorDaVenda, PessoaFisicaNova.getRegiao);
-    // Irá retornar a comissão da pessoa física.
     console.log("Comiss\u00E3o da pessoa f\u00EDsica \u00E9 igual: " + comissaoCalculada.toFixed(2));
     // Retorna o salário total ( salário + comissão )
     console.log("O sal\u00E1rio total \u00E9 de: " + PessoaFisicaNova.SalarioTotal(PessoaFisicaNova.getSalario, comissaoCalculada).toFixed(2));
@@ -173,15 +173,16 @@ try {
 catch (error) {
     console.log("Informação Inválida");
 }
-var PessoaJuridicaVendedor = /** @class */ (function (_super) {
-    __extends(PessoaJuridicaVendedor, _super);
-    function PessoaJuridicaVendedor(Nome, Salario, ValorDaVenda, NomeEmpresa, TotalFuncionarios) {
+console.log("------------------------------------");
+var PessoaJuridicaNovo = /** @class */ (function (_super) {
+    __extends(PessoaJuridicaNovo, _super);
+    function PessoaJuridicaNovo(Nome, Salario, ValorDaVenda, NomeEmpresa, TotalFuncionarios) {
         var _this = _super.call(this, Nome, Salario, ValorDaVenda) || this;
         _this._NomeEmpresa = NomeEmpresa;
         _this._TotalFuncionarios = TotalFuncionarios;
         return _this;
     }
-    Object.defineProperty(PessoaJuridicaVendedor.prototype, "NomeEmpresa", {
+    Object.defineProperty(PessoaJuridicaNovo.prototype, "NomeEmpresa", {
         // Gets
         get: function () {
             return this._NomeEmpresa;
@@ -196,7 +197,7 @@ var PessoaJuridicaVendedor = /** @class */ (function (_super) {
         enumerable: false,
         configurable: true
     });
-    Object.defineProperty(PessoaJuridicaVendedor.prototype, "TotalFuncionarios", {
+    Object.defineProperty(PessoaJuridicaNovo.prototype, "TotalFuncionarios", {
         get: function () {
             return this._TotalFuncionarios;
         },
@@ -210,7 +211,7 @@ var PessoaJuridicaVendedor = /** @class */ (function (_super) {
         configurable: true
     });
     // Método ComissaoPessoaJuridica
-    PessoaJuridicaVendedor.prototype.ComissaoPessoaJuridica = function (ValorDaVenda) {
+    PessoaJuridicaNovo.prototype.ComissaoPessoaJuridica = function (ValorDaVenda) {
         var comissaoJuridica = 0;
         if (ValorDaVenda < 5000) {
             comissaoJuridica = 0.02 * ValorDaVenda;
@@ -224,7 +225,7 @@ var PessoaJuridicaVendedor = /** @class */ (function (_super) {
         return comissaoJuridica;
     };
     // Método SalarioTotalPessoaJuridica
-    PessoaJuridicaVendedor.prototype.SalarioTotalPJ = function (TotalFuncionarios, Comissao, Salario) {
+    PessoaJuridicaNovo.prototype.SalarioTotalPJ = function (TotalFuncionarios, Comissao, Salario) {
         if (TotalFuncionarios < 100) {
             return Salario + Comissao + 200;
         }
@@ -232,15 +233,20 @@ var PessoaJuridicaVendedor = /** @class */ (function (_super) {
             return Salario + Comissao + 300;
         }
     };
-    return PessoaJuridicaVendedor;
+    return PessoaJuridicaNovo;
 }(Vendedores));
-// Instanciando a classe PessoaJuridicaVendedor
-var NovoVendedorJuridico = new PessoaJuridicaVendedor("Pablo", 2000, 150, "IBM", 5);
+// Instanciando a classe PessoaJuridicaNovo
+var NovoVendedorJuridico = new PessoaJuridicaNovo("Pablo", 30000, 4500, "Rocketz Informática", 15);
 try {
-    NovoVendedorJuridico.NomeEmpresa = "CSN";
-    NovoVendedorJuridico.TotalFuncionarios = 99;
-    console.log("Nome vendedor juridico: " + NovoVendedorJuridico.NomeEmpresa);
+    NovoVendedorJuridico.NomeEmpresa = "Pichau Informática";
+    NovoVendedorJuridico.TotalFuncionarios = 50;
+    // NovoVendedorJuridico.setNome = "Mirela";
+    console.log("Nome da empresa: " + NovoVendedorJuridico.NomeEmpresa);
     console.log("Total de funcion\u00E1rios: " + NovoVendedorJuridico.TotalFuncionarios);
+    console.log("Nome do funcion\u00E1rio: " + NovoVendedorJuridico.getNome);
+    console.log("Seu sal\u00E1rio \u00E9 de: R$" + NovoVendedorJuridico.getSalario);
+    console.log("O valor da venda foi de: R$" + NovoVendedorJuridico.getValorDaVenda);
+    // Variável comissaoTotalJuridica vai receber o valor da comissao da pessoa juridica.
     var comissaoTotalJuridica = NovoVendedorJuridico.ComissaoPessoaJuridica(NovoVendedorJuridico.getValorDaVenda);
     console.log("Valor da comiss\u00E3o \u00E9 igual a: " + comissaoTotalJuridica.toFixed(2));
     console.log("Sal\u00E1rio Total Pessoa Jur\u00EDdica: " + NovoVendedorJuridico.SalarioTotalPJ(NovoVendedorJuridico.TotalFuncionarios, comissaoTotalJuridica, NovoVendedorJuridico.getSalario));

@@ -64,7 +64,7 @@ class Veiculos {
   // Set QuantidadeDeDias
   set setQuantidadeDeDias(QuantidadeDeDias: number) {
     if (QuantidadeDeDias === 0) {
-      throw new Error("Dias Inválidos");
+      throw new Error("Informações sobre o dia Inválidas.");
     }
     this._QuantidadeDeDias = QuantidadeDeDias;
   }
@@ -75,7 +75,7 @@ class Veiculos {
   }
 }
 
-// Instanciando Classe
+// Instanciando Classe Veiculos.
 const NovoCarro = new Veiculos("UNO", "Fiat", 2020, 200, 1);
 
 try {
@@ -85,16 +85,20 @@ try {
   NovoCarro.setValorLocacao = 150;
   NovoCarro.setQuantidadeDeDias = 2;
 
-  console.log(NovoCarro.getModelo);
-  console.log(NovoCarro.getMarca);
-  console.log(NovoCarro.getAno);
-  console.log(NovoCarro.getValorLocacao);
-  console.log(NovoCarro.getQuantidadeDeDias);
+  console.log(`O modelo do carro é: ${NovoCarro.getModelo}`);
+  console.log(`A marca do carro é: ${NovoCarro.getMarca}`);
+  console.log(`O ano do carro é: ${NovoCarro.getAno}`);
+  console.log(`O valor da locação do carro é de: ${NovoCarro.getValorLocacao}`);
+  console.log(
+    `Quantidade de dias da locação: ${NovoCarro.getQuantidadeDeDias}`
+  );
 
-  // Passeio
+  // Imprimindo o valor do passeio.
   const dias = NovoCarro.getQuantidadeDeDias;
   const valorDia = NovoCarro.getValorLocacao;
-  console.log(NovoCarro.passeio(dias, valorDia));
+  console.log(
+    `O valor do passeio é de: R$${NovoCarro.passeio(dias, valorDia)} `
+  );
 } catch (error) {
   console.log(error.message);
 }

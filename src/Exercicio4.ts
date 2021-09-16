@@ -37,9 +37,8 @@ class PessoaFisica extends CalculaIR {
 
   set setGastoComSaude(GastoComSaude: number) {
     if (GastoComSaude < 0) {
-      throw new Error("Valor Inválido !!");
+      throw new Error("Valor de gasto com saúde Inválido !!");
     }
-
     this._GastoComSaude = GastoComSaude;
   }
 
@@ -70,7 +69,7 @@ class PessoaJuridica extends CalculaIR {
   // Set
   set setNumeroDeFuncionarios(NumeroDeFuncionarios: number) {
     if (NumeroDeFuncionarios === 0) {
-      throw new Error("Valor Inválido !!");
+      throw new Error("Número de Funcionários Inválidos !!");
     }
     this._NumeroDeFuncionarios = NumeroDeFuncionarios;
   }
@@ -88,40 +87,45 @@ class PessoaJuridica extends CalculaIR {
 // Instanciando Classe GastoPessoaFisica
 const GastoPessoaFisica = new PessoaFisica("Maria", 2000, 500);
 try {
-  GastoPessoaFisica.setNome = "Lucas";
-  GastoPessoaFisica.setRendaAnual = 3000;
-  GastoPessoaFisica.setGastoComSaude = 1;
+  GastoPessoaFisica.setNome = "Pedro";
+  GastoPessoaFisica.setRendaAnual = 30000;
+  GastoPessoaFisica.setGastoComSaude = 100;
 
-  console.log(GastoPessoaFisica.getNome);
-  console.log(GastoPessoaFisica.getRendaAnual);
-  console.log(GastoPessoaFisica.getGastoComSaude);
+  console.log(`O nome da pessoa fisica é: ${GastoPessoaFisica.getNome}`);
+  console.log(`A sua renda anual é de: R$${GastoPessoaFisica.getRendaAnual}`);
+  console.log(
+    `Seu gasto com saúde é de: R$${GastoPessoaFisica.getGastoComSaude}`
+  );
 
   console.log(
-    GastoPessoaFisica.TaxaPessoaFisica(
+    `O valor de imposto a ser pago é de: R$${GastoPessoaFisica.TaxaPessoaFisica(
       GastoPessoaFisica.getRendaAnual,
       GastoPessoaFisica.getGastoComSaude
-    )
+    )}`
   );
 } catch (error) {
   console.log(error.message);
 }
+console.log("-------------------------------");
 
 // Instanciando Classe GastoPessoaJuridica
-const GastoPessoaJuridica = new PessoaJuridica("Gabriel", 2500, 5);
+const GastoPessoaJuridica = new PessoaJuridica("Pichau", 500000, 50);
 try {
-  GastoPessoaJuridica.setNome = "Luis";
-  GastoPessoaJuridica.setRendaAnual = 100;
-  GastoPessoaJuridica.setNumeroDeFuncionarios = 9;
+  GastoPessoaJuridica.setNome = "KaBuM! - E-commerce de Tecnologia e Games";
+  GastoPessoaJuridica.setRendaAnual = 700000;
+  GastoPessoaJuridica.setNumeroDeFuncionarios = 8;
 
-  console.log(GastoPessoaJuridica.getNome);
-  console.log(GastoPessoaJuridica.getRendaAnual);
-  console.log(GastoPessoaJuridica.getNumeroDeFuncionarios);
+  console.log(`Nome pessoa jurídica: ${GastoPessoaJuridica.getNome}`);
+  console.log(`Sua renda anual é de: R$${GastoPessoaJuridica.getRendaAnual}`);
+  console.log(
+    `Número de funcionários: ${GastoPessoaJuridica.getNumeroDeFuncionarios}`
+  );
 
   console.log(
-    GastoPessoaJuridica.TaxaPessoaJuridica(
+    `A taxa da pessoa jurídica é de: R$${GastoPessoaJuridica.TaxaPessoaJuridica(
       GastoPessoaJuridica.getRendaAnual,
       GastoPessoaJuridica.getNumeroDeFuncionarios
-    )
+    ).toFixed(2)}`
   );
 } catch (error) {
   console.log(error.message);

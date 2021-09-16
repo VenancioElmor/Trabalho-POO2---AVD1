@@ -28,14 +28,14 @@ class Vendedores {
 
   set setSalario(Salario: number) {
     if (Salario <= 0) {
-      throw new Error("Valor Inválido!");
+      throw new Error("Salário Inválido!");
     }
     this._Salario = Salario;
   }
 
   set setValorDaVenda(ValorDaVenda: number) {
     if (ValorDaVenda <= 0) {
-      throw new Error("Valor Inválido");
+      throw new Error("Valor da venda Inválido");
     }
     this._ValorDaVenda = ValorDaVenda;
   }
@@ -110,15 +110,13 @@ class VendedorDePessoaFisica extends Vendedores {
 // Instanciando a Classe Vendedores
 const NovoVendedor = new Vendedores("Leandro", 5000, 600);
 try {
-  NovoVendedor.setNome = "André";
+  NovoVendedor.setNome = "Pedro";
   NovoVendedor.setSalario = 5000;
-  NovoVendedor.setValorDaVenda = 600;
+  NovoVendedor.setValorDaVenda = 200;
 
   console.log(`Nome do vendedor é: ${NovoVendedor.getNome} `);
-  console.log(
-    `O salário do vendedor: ${NovoVendedor.getNome}, é igual a: ${NovoVendedor.getSalario}`
-  );
-  console.log(NovoVendedor.getValorDaVenda);
+  console.log(`Seu salário é de: R$${NovoVendedor.getSalario}`);
+  console.log(`O valor da sua venda foi de: R$${NovoVendedor.getValorDaVenda}`);
 
   console.log(
     `Desconto do salário é igual a: ${NovoVendedor.Desconto(
@@ -128,6 +126,7 @@ try {
 } catch (error) {
   console.log(error.message);
 }
+console.log("--------------------------------------");
 
 // Instanciando a Classe VendedorPessoaFisica
 const PessoaFisicaNova = new VendedorDePessoaFisica(
@@ -138,22 +137,22 @@ const PessoaFisicaNova = new VendedorDePessoaFisica(
 );
 
 try {
-  PessoaFisicaNova.setNome = "Lucas";
+  PessoaFisicaNova.setNome = "Rafael";
   PessoaFisicaNova.setSalario = 9000;
-  PessoaFisicaNova.setValorDaVenda = 600;
-  PessoaFisicaNova.setRegiao = "Centro-Oeste";
+  PessoaFisicaNova.setValorDaVenda = 300;
+  PessoaFisicaNova.setRegiao = "Nordeste";
 
-  console.log(PessoaFisicaNova.getNome);
-  console.log(PessoaFisicaNova.getSalario);
-  console.log(PessoaFisicaNova.getValorDaVenda);
-  console.log(PessoaFisicaNova.getRegiao);
+  console.log(`Nome da pessoa física: ${PessoaFisicaNova.getNome}`);
+  console.log(`Salário da pessoa física: ${PessoaFisicaNova.getSalario}`);
+  console.log(`Valor da venda: ${PessoaFisicaNova.getValorDaVenda}`);
+  console.log(`Região: ${PessoaFisicaNova.getRegiao}`);
 
   // Irá armazenar o valor da comissão na variável comissaoCalculada
   const comissaoCalculada = PessoaFisicaNova.MetodoComissao(
     PessoaFisicaNova.getValorDaVenda,
     PessoaFisicaNova.getRegiao
   );
-  // Irá retornar a comissão da pessoa física.
+
   console.log(
     `Comissão da pessoa física é igual: ${comissaoCalculada.toFixed(2)}`
   );
@@ -167,8 +166,9 @@ try {
 } catch (error) {
   console.log("Informação Inválida");
 }
+console.log("------------------------------------");
 
-class PessoaJuridicaVendedor extends Vendedores {
+class PessoaJuridicaNovo extends Vendedores {
   private _NomeEmpresa: string;
   private _TotalFuncionarios: number;
   constructor(
@@ -234,23 +234,30 @@ class PessoaJuridicaVendedor extends Vendedores {
   }
 }
 
-// Instanciando a classe PessoaJuridicaVendedor
-const NovoVendedorJuridico = new PessoaJuridicaVendedor(
+// Instanciando a classe PessoaJuridicaNovo
+const NovoVendedorJuridico = new PessoaJuridicaNovo(
   "Pablo",
-  2000,
-  150,
-  "IBM",
-  5
+  30000,
+  4500,
+  "Rocketz Informática",
+  15
 );
 try {
-  NovoVendedorJuridico.NomeEmpresa = "CSN";
-  NovoVendedorJuridico.TotalFuncionarios = 99;
+  NovoVendedorJuridico.NomeEmpresa = "Pichau Informática";
+  NovoVendedorJuridico.TotalFuncionarios = 50;
+  // NovoVendedorJuridico.setNome = "Mirela";
 
-  console.log(`Nome vendedor juridico: ${NovoVendedorJuridico.NomeEmpresa}`);
+  console.log(`Nome da empresa: ${NovoVendedorJuridico.NomeEmpresa}`);
   console.log(
     `Total de funcionários: ${NovoVendedorJuridico.TotalFuncionarios}`
   );
+  console.log(`Nome do funcionário: ${NovoVendedorJuridico.getNome}`);
+  console.log(`Seu salário é de: R$${NovoVendedorJuridico.getSalario}`);
+  console.log(
+    `O valor da venda foi de: R$${NovoVendedorJuridico.getValorDaVenda}`
+  );
 
+  // Variável comissaoTotalJuridica vai receber o valor da comissao da pessoa juridica.
   const comissaoTotalJuridica = NovoVendedorJuridico.ComissaoPessoaJuridica(
     NovoVendedorJuridico.getValorDaVenda
   );

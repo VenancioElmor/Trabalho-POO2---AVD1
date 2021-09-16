@@ -22,7 +22,12 @@ class Fatura {
 }
 
 // Instanciando
-const Compra = new Fatura(129328, "Celular", 2, 1500);
+const novaFatura = new Fatura(129328, "Celular", 2, 1500);
+console.log(`O preço do produto é de: R$${novaFatura.getPreco}`);
+console.log(`Quantidade comprada: ${novaFatura.getQuantidadeComprada}`);
 console.log(
-  Compra.ValorDaFatura(Compra.getQuantidadeComprada, Compra.getPreco)
+  `O valor da nova fatura será de: R$${novaFatura.ValorDaFatura(
+    novaFatura.getPreco,
+    novaFatura.getQuantidadeComprada
+  )}`
 );

@@ -28,5 +28,7 @@ var Fatura = /** @class */ (function () {
     return Fatura;
 }());
 // Instanciando
-var Compra = new Fatura(129328, "Celular", 2, 1500);
-console.log(Compra.ValorDaFatura(Compra.getQuantidadeComprada, Compra.getPreco));
+var novaFatura = new Fatura(129328, "Celular", 2, 1500);
+console.log("O pre\u00E7o do produto \u00E9 de: R$" + novaFatura.getPreco);
+console.log("Quantidade comprada: " + novaFatura.getQuantidadeComprada);
+console.log("O valor da nova fatura ser\u00E1 de: R$" + novaFatura.ValorDaFatura(novaFatura.getPreco, novaFatura.getQuantidadeComprada));
