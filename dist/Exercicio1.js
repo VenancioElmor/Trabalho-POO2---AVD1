@@ -80,7 +80,7 @@ catch (error) {
 }
 // Verificando o Sexo
 try {
-    NovaPessoa.setSexo = "masculino";
+    NovaPessoa.setSexo = "";
     console.log("O g\u00EAnero \u00E9: " + NovaPessoa.getSexo);
 }
 catch (error) {
@@ -88,7 +88,7 @@ catch (error) {
 }
 // Verificando idade
 try {
-    NovaPessoa.setIdade = 19;
+    NovaPessoa.setIdade = 17;
     console.log("A idade \u00E9 de: " + NovaPessoa.getIdade + " anos");
     // Método para verificar se é maior de idade ou menor de idade.
     NovaPessoa.VerificarIdade();

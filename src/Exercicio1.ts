@@ -60,7 +60,7 @@ try {
 
 // Verificando o Sexo
 try {
-  NovaPessoa.setSexo = "masculino";
+  NovaPessoa.setSexo = "";
   console.log(`O gênero é: ${NovaPessoa.getSexo}`);
 } catch (error) {
   console.log(error.message);
@@ -68,7 +68,7 @@ try {
 
 // Verificando idade
 try {
-  NovaPessoa.setIdade = 19;
+  NovaPessoa.setIdade = 17;
   console.log(`A idade é de: ${NovaPessoa.getIdade} anos`);
 
   // Método para verificar se é maior de idade ou menor de idade.

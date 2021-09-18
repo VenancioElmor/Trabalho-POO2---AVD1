@@ -88,8 +88,8 @@ class PessoaJuridica extends CalculaIR {
 const GastoPessoaFisica = new PessoaFisica("Maria", 2000, 500);
 try {
   GastoPessoaFisica.setNome = "Pedro";
-  GastoPessoaFisica.setRendaAnual = 30000;
-  GastoPessoaFisica.setGastoComSaude = 100;
+  GastoPessoaFisica.setRendaAnual = 50000;
+  GastoPessoaFisica.setGastoComSaude = 2000;
 
   console.log(`O nome da pessoa fisica é: ${GastoPessoaFisica.getNome}`);
   console.log(`A sua renda anual é de: R$${GastoPessoaFisica.getRendaAnual}`);
@@ -112,8 +112,8 @@ console.log("-------------------------------");
 const GastoPessoaJuridica = new PessoaJuridica("Pichau", 500000, 50);
 try {
   GastoPessoaJuridica.setNome = "KaBuM! - E-commerce de Tecnologia e Games";
-  GastoPessoaJuridica.setRendaAnual = 700000;
-  GastoPessoaJuridica.setNumeroDeFuncionarios = 8;
+  GastoPessoaJuridica.setRendaAnual = 400000;
+  GastoPessoaJuridica.setNumeroDeFuncionarios = 25;
 
   console.log(`Nome pessoa jurídica: ${GastoPessoaJuridica.getNome}`);
   console.log(`Sua renda anual é de: R$${GastoPessoaJuridica.getRendaAnual}`);
